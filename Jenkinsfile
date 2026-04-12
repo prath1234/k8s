@@ -5,7 +5,7 @@ pipeline {
         AWS_REGION = 'ap-south-1'
         ECR_REPO = '163434000537.dkr.ecr.ap-south-1.amazonaws.com/nginx-app'
         IMAGE_TAG = 'latest'
-        CLUSTER_NAME = 'my-eks-cluster'
+        CLUSTER_NAME = 'pro-eks-cluster'
     }
 
     stages {
