@@ -25,7 +25,7 @@ pipeline {
         stage('Tag Image') {
             steps {
                 sh '''
-                docker tag nginx-app:latest $ECR_REPO:$IMAGE_TAG
+                docker tag nginx-app $ECR_REPO:$IMAGE_TAG
                 '''
             }
         }
