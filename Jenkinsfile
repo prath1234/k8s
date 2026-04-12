@@ -11,10 +11,10 @@ pipeline {
     stages {
 
         stage('Checkout Code') {
-            steps {
-                git 'https://github.com/prath1234/k8s.git'
-            }
-        }
+    steps {
+        git branch: 'main', url: 'https://github.com/prath1234/k8s.git'
+    }
+}
 
         stage('Build Docker Image') {
             steps {
