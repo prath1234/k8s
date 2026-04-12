@@ -51,16 +51,20 @@ pipeline {
         }
 
         stage('Deploy to EKS') {
-            steps {
-                sh '''
-                aws eks update-kubeconfig --region $AWS_REGION --name $CLUSTER_NAME
+    steps {
+        withCredentials([[
+            $class: 'AmazonWebServicesCredentialsBinding',
+            credentialsId: 'aws'
+        ]]) {
+            sh '''
+            aws eks update-kubeconfig --region ap-south-1 --name my-eks-cluster
 
-                sed -i "s|IMAGE_URI|$ECR_REPO:$IMAGE_TAG|g" deployment.yaml
+            sed -i "s|IMAGE_URI|163434000537.dkr.ecr.ap-south-1.amazonaws.com/nginx-app:latest|g" deployment.yaml
 
-                kubectl apply -f deployment.yaml
-                kubectl apply -f service.yaml
-                '''
-            }
+            kubectl apply -f deployment.yaml
+            kubectl apply -f service.yaml
+            '''
         }
     }
+}
 }
