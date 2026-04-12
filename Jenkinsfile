@@ -57,7 +57,7 @@ pipeline {
             credentialsId: 'aws'
         ]]) {
             sh '''
-            aws eks update-kubeconfig --region ap-south-1 --name my-eks-cluster
+            aws eks update-kubeconfig --region ap-south-1 --name pro-eks-cluster
 
             sed -i "s|IMAGE_URI|163434000537.dkr.ecr.ap-south-1.amazonaws.com/nginx-app:latest|g" deployment.yaml
 
