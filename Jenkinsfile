@@ -5,7 +5,7 @@ pipeline {
         AWS_REGION = 'ap-south-1'
         ECR_REPO = '163434000537.dkr.ecr.ap-south-1.amazonaws.com/nginx-app'
         IMAGE_TAG = "${BUILD_NUMBER}"
-        CLUSTER_NAME = 'pro-eks-cluster'
+        CLUSTER_NAME = 'pros-eks-cluster'
     }
 
     stages {
@@ -57,7 +57,7 @@ pipeline {
             credentialsId: 'aws'
         ]]) {
             sh '''
-            aws eks update-kubeconfig --region ap-south-1 --name pro-eks-cluster
+            aws eks update-kubeconfig --region ap-south-1 --name pros-eks-cluster
 
             sed -i "s|IMAGE_URI|163434000537.dkr.ecr.ap-south-1.amazonaws.com/nginx-app:latest|g" deployment.yaml
 
